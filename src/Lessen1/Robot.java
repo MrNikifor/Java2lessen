@@ -1,9 +1,8 @@
 package Lessen1;
 
-
 public class Robot implements ParticipantsCompetition{     // данные класса робот
 
-    public String name;
+    private String name;
 
     public Robot(String name) {
             this.name = name;
@@ -21,10 +20,8 @@ public class Robot implements ParticipantsCompetition{     // данные кл�
 
     @Override
     public String toString() {
-        return "Robot{" +
-                "name '" + name + '\'' +
-                '}';
+      return "Robot '" + name + "' ";
     }
-    }
+}
 
 

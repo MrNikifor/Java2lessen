@@ -1,8 +1,9 @@
 package Lessen1;
 
-
 public class Cat implements ParticipantsCompetition{       // данные класса кот
-    public String name;
+
+    private String name;
+    
     public Cat(String name) {
         this.name = name;
     }
@@ -16,9 +17,7 @@ public class Cat implements ParticipantsCompetition{       // данные кл�
     }
     @Override
     public String toString() {
-        return "Cat{" +
-                "name '" + name + '\'' +
-                '}';
+        return "Cat '" + name + "' ";
     }
 }
 

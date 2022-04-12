@@ -2,7 +2,7 @@ package Lessen1;
 
 public class Human implements ParticipantsCompetition{  // данные класса человек
 
-    public String name;
+    private String name;
 
     public Human(String name) {
         this.name = name;
@@ -19,7 +19,7 @@ public class Human implements ParticipantsCompetition{  // данные клас
 
     @Override
     public String toString() {
-        return "Human{" + "name '" + name + '\'' + '}';
+        return "Human '" + name + "' ";
     }
 
 }

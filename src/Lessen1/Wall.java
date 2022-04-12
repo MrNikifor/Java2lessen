@@ -7,7 +7,7 @@ public class Wall implements Obstacles{
     }
     public boolean canDoIt(ParticipantsCompetition jumps){   // логический метод выполнилось ли действие(флажек).
         int heightJump = jumps.jump();
-        System.out.println(" can the height " + height);
+        System.out.println(" get the height " + height);
         return heightJump >= height;
     }
 }

@@ -19,8 +19,14 @@ public class Main {
     private static void crossingObstacle(ParticipantsCompetition[] participantsCompetitions, Obstacles[] obstacles){
         for (ParticipantsCompetition participantsCompetition : participantsCompetitions) {    // массивы участников и
             for (Obstacles obstacle : obstacles) {                                            // препядствий
-                System.out.print(participantsCompetition.toString() + " ");
-                System.out.println(obstacle.canDoIt(participantsCompetition) + " ");
+
+                if(obstacle.canDoIt(participantsCompetition)) {
+                    System.out.println(participantsCompetition.toString());
+                    System.out.println(" Path the distance ");
+                }else {
+                    System.out.println(" Can't do it ");
+                    continue;
+                }
             }
         }
         System.out.println();
