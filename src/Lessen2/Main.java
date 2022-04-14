@@ -13,10 +13,12 @@ public class Main {
                 int result = method(arr);
                 System.out.println(result);
             } catch (MyArraySizeException e) {
+                e.getMessage();
                 System.out.println("Array size exceeded!");
             }
         }
         catch (MyArrayDataException e) {
+            e.getMessage();
             System.out.println("Incorrect array value!");
             System.out.println(String.format("by index arr[%d][%d]", e.getline(),e.getpost()));
         }
