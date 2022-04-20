@@ -2,19 +2,20 @@ package Lessen3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 public class ContactList {
 
-    HashMap<String, ArrayList<String>> phoneMap = new HashMap<>();
+    HashMap<String, List<String>> phoneMap = new HashMap<>();
 
 
     public void add(String surname, String phone) {
 
-        ArrayList<String> strings = phoneMap.get(surname);
+        List<String> strings = phoneMap.get(surname);
 
         if (strings == null) {
-            ArrayList<String> listOfPhones = new ArrayList<>();
+            List<String> listOfPhones = new ArrayList<>();
             listOfPhones.add(phone);
             phoneMap.put(surname, listOfPhones);
         } else {
@@ -23,7 +24,7 @@ public class ContactList {
         }
     }
 
-    public ArrayList<String> get(String surname) {
+    public List<String> get(String surname) {
         return phoneMap.get(surname);
     }
 

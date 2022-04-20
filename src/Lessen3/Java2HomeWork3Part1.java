@@ -7,20 +7,21 @@ public class Java2HomeWork3Part1 {
         decision();
     }
     private static void decision() {
-        String [] animals = {"Dog", "Pork", "Cat", "Horse", "Leon", "Crocodile",
-                             "Bear", "Hippopotamus", "Leon", "Giraffe",
-                             "Deer", "Elephant", "Squirrel", "Leon", "Pork"};
+        String[] animals = {"Dog", "Pork", "Cat", "Horse", "Leon", "Crocodile",
+                "Bear", "Hippopotamus", "Leon", "Giraffe",
+                "Deer", "Elephant", "Squirrel", "Leon", "Pork"};
 
 
         Map<String, Integer> map = new HashMap<>();
         for (String animal : animals) {
-            if (map.containsKey(animal))
+            if (map.containsKey(animal)) {
                 map.put(animal, map.get(animal) + 1);
-            else
+            } else {
                 map.put(animal, 1);
+            }
+            System.out.println(map);
         }
-        System.out.println(map);
     }
-
-
 }
+
+
