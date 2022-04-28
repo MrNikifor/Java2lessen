@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.clientchat.ClientController">
+   <top>
+      <Label alignment="CENTER" prefHeight="58.0" prefWidth="215.0" text="BUZZ CHAT" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Yu Gothic Light" size="35.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.49999995761447485" centerY="0.5419847109845577" focusDistance="0.018691570959358472" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" blue="1.1102230246251565E-16" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.16241285596124305">
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" blue="1.1102230246251565E-16" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.19091357290744781" green="0.1837037056684494" blue="0.4000000059604645" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </top>
+   <bottom>
+      <Button fx:id="sendMessageButton" mnemonicParsing="false" onAction="#appendMessageToChat" prefHeight="39.0" prefWidth="430.0" text="&gt;&gt;&gt;&gt;" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <graphic>
+            <TextField fx:id="messageField" nodeOrientation="LEFT_TO_RIGHT" onAction="#appendMessageToChat" prefHeight="25.0" prefWidth="315.0">
+               <font>
+                  <Font name="Droid Sans Mono Dotted" size="10.0" />
+               </font>
+            </TextField>
+         </graphic>
+         <textFill>
+            <RadialGradient centerX="0.8822221967909072" centerY="0.5419847109845577" focusDistance="0.018691570959358472" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" blue="1.1102230246251565E-16" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.3655913978494625">
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" blue="1.1102230246251565E-16" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.41433297884910775">
+                     <color>
+                        <Color red="0.9333333373069763" green="1.0" blue="1.1102230246251565E-16" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.19091357290744781" green="0.1837037056684494" blue="0.4000000059604645" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+   </bottom>
+   <center>
+      <SplitPane disable="true" dividerPositions="0.9887267904509285" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextArea fx:id="messageTextArea" prefHeight="296.0" prefWidth="427.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Serif Regular" size="13.0" />
+                     </font></TextArea>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
+   </center>
+   <left>
+      <ListView fx:id="userList" prefHeight="303.0" prefWidth="91.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
