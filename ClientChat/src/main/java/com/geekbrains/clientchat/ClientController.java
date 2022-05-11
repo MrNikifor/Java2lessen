@@ -1,52 +1,71 @@
 package com.geekbrains.clientchat;
 
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.function.Consumer;
 
 public class ClientController {
 
     @FXML
-    public TextArea messageTextArea;
+    public TextArea chatTextArea;
     @FXML
     public Button sendMessageButton;
     @FXML
-    public TextField messageField;
+    public TextField messageTextArea;
     @FXML
     public ListView userList;
 
-    public void appendMessageToChat(ActionEvent actionEvent) {    // метод вывода текста из набора текста(TextField) в окно чата(TextArea).
-        if (!messageField.getText().isEmpty()){    //  если строка ввода не пустая
-            messageTextArea.appendText(DateFormat.getDateTimeInstance().format(new Date()));  // перед текстом добавляем формат даты
-            messageTextArea.appendText(System.lineSeparator());    // перенос новой строки в окне чата
-            if (!userList.getSelectionModel().isEmpty()){        // пишем конкретному users
-                String sender = userList.getSelectionModel().getSelectedItem().toString();
-                messageTextArea.appendText(sender + ": ");
-            }else {
-                messageTextArea.appendText("Я: ");
-            }
-            messageTextArea.appendText(messageField.getText().trim());    // ввод текста в окно чата из строки набора текста (trim(). обрезает пробелы в начале и в конце)
-            messageTextArea.appendText(System.lineSeparator());    // перенос новой строки в окне чата
-            messageTextArea.appendText(System.lineSeparator());    // перенос новой строки в окне чата
-            requestFocus();
-            messageField.clear();   // удаление текста с строки ввода после переноса его в окно чата
+    private Network network;
+    private ClientChat application;
+
+    public void sendMessage(){
+        String message = messageTextArea.getText();
+        chatTextArea.appendText(DateFormat.getDateTimeInstance().format(new Date()) + " ");
+        messageTextArea.requestFocus();
+        appendMessageToChat(message);
+        try {
+            network.sendMessage(message);
+        } catch (IOException e) {
+            application.showErrorDialog("Error when transmitting data over the network");
         }
+
     }
-    public void requestFocus(){          // метод позволяющий возобновлять курсор постоянно в строке ввода текста
-        Platform.runLater(new Runnable() {
+
+    public void appendMessageToChat(String message) {    // метод вывода текста из набора текста(TextField) в окно чата(TextArea).
+       if (!message.isEmpty()){
+           chatTextArea.appendText(message);
+           chatTextArea.appendText(System.lineSeparator());
+           messageTextArea.clear();
+       }
+    }
+
+    public Network getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
+        network.waitMessage(new Consumer<String>() {
             @Override
-            public void run() {
-                messageField.requestFocus();
+            public void accept(String message) {
+                appendMessageToChat(message);
             }
         });
+    }
+
+    public ClientChat getApplication() {
+        return application;
+    }
+
+    public void setApplication(ClientChat application) {
+        this.application = application;
     }
 }
